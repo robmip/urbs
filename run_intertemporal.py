@@ -28,51 +28,53 @@ objective = 'cost'  # set either 'cost' or 'CO2' as objective
 solver = 'glpk'
 
 # simulation timesteps
-(offset, length) = (0, 8760)  # time step selection
+(offset, length) = (0, 24)  # time step selection
 timesteps = range(offset, offset+length+1)
 dt = 1  # length of each time step (unit: hours)
 
 # detailed reporting commodity/sites
 report_tuples = [
-    (year, 'North', 'Elec'),
-    (year, 'Mid', 'Elec'),
-    (year, 'South', 'Elec'),
-    (year, ['North', 'Mid', 'South'], 'Elec'),
-    (year+5, 'North', 'Elec'),
-    (year+5, 'Mid', 'Elec'),
-    (year+5, 'South', 'Elec'),
-    (year+5, ['North', 'Mid', 'South'], 'Elec'),
-    (year+10, 'North', 'Elec'),
-    (year+10, 'Mid', 'Elec'),
-    (year+10, 'South', 'Elec'),
-    (year+10, ['North', 'Mid', 'South'], 'Elec'),
-    (year+15, 'North', 'Elec'),
-    (year+15, 'Mid', 'Elec'),
-    (year+15, 'South', 'Elec'),
-    (year+15, ['North', 'Mid', 'South'], 'Elec'),    
+    #(year, 'North', 'Elec'),
+    #(year, 'Mid', 'Elec'),
+    #(year, 'South', 'Elec'),
+    #(year, ['North', 'Mid', 'South'], 'Elec'),
+    #(year+5, 'North', 'Elec'),
+    #(year+5, 'Mid', 'Elec'),
+    #(year+5, 'South', 'Elec'),
+    #(year+5, ['North', 'Mid', 'South'], 'Elec'),
+    #(year+10, 'North', 'Elec'),
+    #(year+10, 'Mid', 'Elec'),
+    #(year+10, 'South', 'Elec'),
+    #(year+10, ['North', 'Mid', 'South'], 'Elec'),
+    #(year+15, 'North', 'Elec'),
+    #(year+15, 'Mid', 'Elec'),
+    #(year+15, 'South', 'Elec'),
+    #(year+15, ['North', 'Mid', 'South'], 'Elec'),    
     ]
 
 # optional: define names for sites in report_tuples
-report_sites_name = {('North', 'Mid', 'South'): 'All'}
+report_sites_name = {
+    #('North', 'Mid', 'South'): 'All'
+    }
 
 # plotting commodities/sites
 plot_tuples = [
-    (year, 'North', 'Elec'),
-    (year, 'Mid', 'Elec'),
-    (year, 'South', 'Elec'),
-    (year, ['North', 'Mid', 'South'], 'Elec'),
-    (year+5, 'North', 'Elec'),
-    (year+5, 'Mid', 'Elec'),
-    (year+5, 'South', 'Elec'),
-    (year+5, ['North', 'Mid', 'South'], 'Elec'),
-    (year+10, 'North', 'Elec'),
-    (year+10, 'Mid', 'Elec'),
-    (year+10, 'South', 'Elec'),
-    (year+10, ['North', 'Mid', 'South'], 'Elec'),
-    (year+15, 'North', 'Elec'),
-    (year+15, 'Mid', 'Elec'),
-    (year+15, 'South', 'Elec'),
-    (year+15, ['North', 'Mid', 'South'], 'Elec'),    
+    #(year, 'North', 'Elec'),
+    #(year, 'Mid', 'Elec'),
+    #(year, 'South', 'Elec'),
+    #(year, ['North', 'Mid', 'South'], 'Elec'),
+    #(year+5, 'North', 'Elec'),
+    #(year+5, 'Mid', 'Elec'),
+    #(year+5, 'South', 'Elec'),
+    #(year+5, ['North', 'Mid', 'South'], 'Elec'),
+    #(year+10, 'North', 'Elec'),
+    #(year+10, 'Mid', 'Elec'),
+    #(year+10, 'South', 'Elec'),
+    #(year+10, ['North', 'Mid', 'South'], 'Elec'),
+    #(year+15, 'North', 'Elec'),
+    #(year+15, 'Mid', 'Elec'),
+    #(year+15, 'South', 'Elec'),
+    #(year+15, ['North', 'Mid', 'South'], 'Elec'),    
     ]
 
 # optional: define names for sites in plot_tuples
@@ -85,21 +87,27 @@ plot_periods = {
 
 # add or change plot colors
 my_colors = {
-    'South': (230, 200, 200),
-    'Mid': (200, 230, 200),
-    'North': (200, 200, 230)}
+    #Cen:
+    #Car:
+    #Nor:
+    #Ori:
+    #Val:
+    #'South': (230, 200, 200),
+    #'Mid': (200, 230, 200),
+    #'North': (200, 200, 230)
+    }
 for country, color in my_colors.items():
     urbs.COLORS[country] = color
 
 # select scenarios to be run
 scenarios = [
              urbs.scenario_base,
-             urbs.scenario_stock_prices,
-             urbs.scenario_co2_limit,
-             urbs.scenario_co2_tax_mid,
-             urbs.scenario_no_dsm,
-             urbs.scenario_north_process_caps,
-             urbs.scenario_all_together
+             #urbs.scenario_stock_prices,
+             #urbs.scenario_co2_limit,
+             #urbs.scenario_co2_tax_mid,
+             #urbs.scenario_no_dsm,
+             #urbs.scenario_north_process_caps,
+             #urbs.scenario_all_together
             ]
 
 for scenario in scenarios:
