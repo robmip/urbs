@@ -26,11 +26,15 @@ def scenario_co2_limit(data):
     return data
 
 
-def scenario_co2_tax_mid(data):
+def scenario_co2_tax(data):
     # change CO2 price in Mid
     co = data['commodity']
     for stf in data['global_prop'].index.levels[0].tolist():
-        co.loc[(stf, 'Mid', 'CO2', 'Env'), 'price'] = 50
+        co.loc[(stf, 'Cen', 'CO2', 'Env'), 'price'] = 100
+        co.loc[(stf, 'Car', 'CO2', 'Env'), 'price'] = 100
+        co.loc[(stf, 'Nor', 'CO2', 'Env'), 'price'] = 100
+        co.loc[(stf, 'Ori', 'CO2', 'Env'), 'price'] = 100
+        co.loc[(stf, 'Val', 'CO2', 'Env'), 'price'] = 100
     return data
 
 
