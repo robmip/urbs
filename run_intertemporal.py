@@ -102,7 +102,7 @@ for country, color in my_colors.items():
 # select scenarios to be run
 scenarios = [
              urbs.scenario_base,
-             urbs.scenario_co2_tax,             
+             #urbs.scenario_co2_tax,             
              #urbs.scenario_stock_prices,
              #urbs.scenario_co2_limit,
              #urbs.scenario_no_dsm,

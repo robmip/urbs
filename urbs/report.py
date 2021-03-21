@@ -2,6 +2,9 @@ import pandas as pd
 from .input import get_input
 from .output import get_constants, get_timeseries
 from .util import is_string
+from .features import *
+from .input import *
+#from .features import modelhelper #commodity_balance
 
 
 def report(instance, filename, report_tuples=None, report_sites_name={}):
@@ -27,9 +30,23 @@ def report(instance, filename, report_tuples=None, report_sites_name={}):
 
         # write constants to spreadsheet
         costs.to_frame().to_excel(writer, 'Costs')
-        cpro.to_excel(writer, 'Process caps')
+        #cpro.to_excel(writer, 'Process caps')
         ctra.to_excel(writer, 'Transmission caps')
         csto.to_excel(writer, 'Storage caps')
+
+
+        #calculate in situ costs per process
+
+        cpro['inv_cost_NoStorage'] = cpro['New']* \
+        [instance.process_dict['inv-cost'][x] for x in cpro.index.tolist()]* \
+        [instance.process_dict['invcost-factor'][x] for x in cpro.index.tolist()]
+
+        cpro['fix_cost_NoStorage'] = cpro['Total']* \
+        [instance.process_dict['fix-cost'][x] for x in cpro.index.tolist()]* \
+        [instance.process_dict['cost_factor'][x] for x in cpro.index.tolist()]         
+        
+        cpro.to_excel(writer, 'Process caps')
+
 
         # initialize timeseries tableaus
         energies = []
