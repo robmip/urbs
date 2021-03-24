@@ -1,7 +1,12 @@
 import os
 import shutil
 import urbs
-from datetime import date
+#import date
+#import datetime
+from datetime import date, datetime
+#from datetime import datetime
+
+print(f'initiate run: {datetime.now()}')
 
 input_files = 'Intertemporal_example'  # for single year file name, for intertemporal folder name
 input_dir = 'Input'
@@ -10,6 +15,7 @@ input_path = os.path.join(input_dir, input_files)
 result_name = 'Intertemp'
 result_dir = urbs.prepare_result_directory(result_name)  # name + time stamp
 
+print(f'Data prepared and read: {datetime.now()}')
 #get year
 year = date.today().year
 
@@ -28,7 +34,7 @@ objective = 'cost'  # set either 'cost' or 'CO2' as objective
 solver = 'glpk'
 
 # simulation timesteps
-(offset, length) = (0, 24)  # time step selection
+(offset, length) = (0, 27)  # time step selection
 timesteps = range(offset, offset+length+1)
 dt = 1  # length of each time step (unit: hours)
 
@@ -102,13 +108,15 @@ for country, color in my_colors.items():
 # select scenarios to be run
 scenarios = [
              urbs.scenario_base,
-             #urbs.scenario_co2_tax,             
+             #urbs.scenario_co2_tax,
+             #urbs.scenario_high_biom
              #urbs.scenario_stock_prices,
              #urbs.scenario_co2_limit,
              #urbs.scenario_no_dsm,
              #urbs.scenario_north_process_caps,
              #urbs.scenario_all_together
             ]
+print(f'solving and reporting: {datetime.now()}')
 
 for scenario in scenarios:
     prob = urbs.run_scenario(input_path, solver, timesteps, scenario,

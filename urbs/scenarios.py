@@ -29,14 +29,23 @@ def scenario_co2_limit(data):
 def scenario_co2_tax(data):
     # change CO2 price in Mid
     co = data['commodity']
-    for stf in data['global_prop'].index.levels[0].tolist():
-        co.loc[(stf, 'Cen', 'CO2', 'Env'), 'price'] = 100
-        co.loc[(stf, 'Car', 'CO2', 'Env'), 'price'] = 100
-        co.loc[(stf, 'Nor', 'CO2', 'Env'), 'price'] = 100
-        co.loc[(stf, 'Ori', 'CO2', 'Env'), 'price'] = 100
-        co.loc[(stf, 'Val', 'CO2', 'Env'), 'price'] = 100
+    #for stf in data['global_prop'].index.levels[0].tolist():
+    co.loc[('Cen', 'CO2', 'Env'), 'price'] = 100
+    co.loc[('Car', 'CO2', 'Env'), 'price'] = 100
+    co.loc[('Nor', 'CO2', 'Env'), 'price'] = 100
+    co.loc[('Ori', 'CO2', 'Env'), 'price'] = 100
+    co.loc[('Val', 'CO2', 'Env'), 'price'] = 100
     return data
 
+def scenario_high_biom(data):
+    # change CO2 price in Mid
+    co = data['suplm']
+    #for stf in data['global_prop'].index.levels[0].tolist():
+    co['Cen.Bagasse'] *= .3
+    co['Ori.Bagasse'] *= .3
+    co['Nor.Bagasse'] *= .3
+    co['Val.Bagasse'] *= .3
+    return data
 
 def scenario_north_process_caps(data):
     # change maximum installable capacity
