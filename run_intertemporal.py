@@ -36,7 +36,7 @@ solver = 'glpk'
 # simulation timesteps
 (offset, length) = (0, 27)  # time step selection
 timesteps = range(offset, offset+length+1)
-dt = 1  # length of each time step (unit: hours)
+dt = 322  # length of each time step (unit: hours)
 
 # detailed reporting commodity/sites
 report_tuples = [
@@ -84,7 +84,7 @@ plot_tuples = [
     ]
 
 # optional: define names for sites in plot_tuples
-plot_sites_name = {('North', 'Mid', 'South'): 'All'}
+plot_sites_name = {}#('North', 'Mid', 'South'): 'All'}
 
 # plotting timesteps
 plot_periods = {
@@ -126,3 +126,5 @@ for scenario in scenarios:
                              plot_periods=plot_periods,
                              report_tuples=report_tuples,
                              report_sites_name=report_sites_name)
+
+print(f'Run finished: {datetime.now()}')
